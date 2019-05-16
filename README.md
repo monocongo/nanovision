@@ -3,6 +3,7 @@ Configuration of a NVIDIA Jetson Nano with deep learning based computer vision m
 
 #### Install required system packages
 ```
+$ sudo apt-get update
 $ sudo apt-get install git cmake
 $ sudo apt-get install libatlas-base-dev gfortran
 $ sudo apt-get install libhdf5-serial-dev hdf5-tools
@@ -56,6 +57,8 @@ $ pip install keras
 #### Build the Jetson Inference engine
 ###### Clone down the jetson-inference git repo:
 ```
+$ mkdir ~/git 
+$ cd git
 $ git clone https://github.com/dusty-nv/jetson-inference
 $ cd jetson-inference
 $ git submodule update --init
@@ -71,4 +74,12 @@ $ cmake ..
 ```
 $ make
 $ sudo make install
+```
+
+#### Build OpenCV
+```
+$ cd ~/git 
+$ git clone https://github.com/mdegans/nano_build_opencv.git
+$ cd nano_build_opencv
+$ ./build_opencv.sh 
 ```
