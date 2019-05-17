@@ -27,18 +27,33 @@ export WORKON_HOME=$HOME/.virtualenvs
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 source /usr/local/bin/virtualenvwrapper.sh
 ```
-Next we'll source the `~/.bashrc` file to put the above into play:
+
+Source the `~/.bashrc` file to put the above environment variables and virtual environment settings into effect:
 ```
 $ source ~/.bashrc
 ```
 
-###### Python virtula environment
-Now we'll create and activate a Python virtual environment:
+###### Python virtual environment
+
+Create and activate a Python virtual environment:
 ```
-$ mkvirtualenv nanoviz -p python3
-$ workon nanoviz
+$ mkvirtualenv nano -p python3
+$ workon nano
 ```
-We'll add packages into the virtual environment we'll need, beginning with [numpy]():
+
+To avoid errors/warnings about the current user not having correct permissions we change the owner of the `.cache` directory. For example the errors we're avoiding:
+
+```
+  WARNING: Building wheel for numpy failed: [Errno 13] Permission denied: '/home/james/.cache/pip/wheels/8c'
+```
+
+Use `sudo` to recursively change the owner of the directory to the current user:
+
+```
+$ sudo chown -R james ~/.cache
+```
+
+Add packages into the virtual environment we'll need, beginning with [NumPy](https://www.numpy.org/):
 ```
 $ pip install numpy
 ```
@@ -48,7 +63,7 @@ Add the official Jetson Nano TensorFlow package:
 $ pip install --extra-index-url https://developer.download.nvidia.com/compute/redist/jp/v42 tensorflow-gpu==1.13.1+nv19.3
 ```
 
-Install SciPy and Keras:
+Install [SciPy](https://www.scipy.org/) and [Keras](https://keras.io/):
 ```
 $ pip install scipy
 $ pip install keras
@@ -77,8 +92,7 @@ $ sudo make install
 ```
 
 #### Build OpenCV
-##### (Option #2) Use build script from mdegans 
-Build from source
+###### (Option #1) Build from source
 ```
 $ cd ~/git
 $ git clone https://github.com/opencv/opencv.git
@@ -102,7 +116,7 @@ $ sudo make install
 $ sudo ldconfig
 ```
 
-##### (Option #2) Use build script from mdegans 
+###### (Option #2) Use build script from mdegans 
 ```
 $ cd ~/git 
 $ git clone https://github.com/mdegans/nano_build_opencv.git
