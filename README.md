@@ -100,7 +100,7 @@ $ cd ~/opencv_install
 $ git clone https://github.com/AastaNV/JEP.git
 $ cd JEP/script
 $ chmod +x install_opencv4.0.0_Nano.sh
-$ sudo ./install_opencv4.0.0_Nano.sh
+$ sudo ./install_opencv4.0.0_Nano.sh ~/opencv_install
 ```
 <!---
 ```
