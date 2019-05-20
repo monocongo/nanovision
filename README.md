@@ -93,6 +93,16 @@ $ sudo make install
 
 #### Build OpenCV
 ###### (Option #1) Build from source
+Use the script for OpenCV 4.0.0 build/installation provided by NVIDIA.
+```
+$ mkdir ~/opencv_install
+$ cd ~/opencv_install
+$ git clone https://github.com/AastaNV/JEP.git
+$ cd JEP/script
+$ chmod +x install_opencv4.0.0_Nano.sh
+$ sudo ./install_opencv4.0.0_Nano.sh
+```
+<!---
 ```
 $ cd ~/git
 $ git clone https://github.com/opencv/opencv.git
@@ -123,3 +133,4 @@ $ git clone https://github.com/mdegans/nano_build_opencv.git
 $ cd nano_build_opencv
 $ ./build_opencv.sh 
 ```
+--->
