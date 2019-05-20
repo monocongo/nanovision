@@ -8,6 +8,8 @@ $ sudo apt-get install git cmake
 $ sudo apt-get install libatlas-base-dev gfortran
 $ sudo apt-get install libhdf5-serial-dev hdf5-tools
 $ sudo apt-get install python3-dev
+$ sudo apt-get install libssl-dev
+$ sudo apt-get install libffi-dev
 ```
 
 ### Add swap space
