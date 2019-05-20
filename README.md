@@ -110,7 +110,7 @@ $ sudo make install
 
 ### Build OpenCV
 ###### Build from source
-Use the script for OpenCV 4.0.0 build/installation provided by NVIDIA.
+Use the script for OpenCV (v4.0.0) build/installation provided by NVIDIA.
 ```
 $ mkdir ~/opencv_install
 $ cd ~/opencv_install
@@ -118,4 +118,22 @@ $ git clone https://github.com/AastaNV/JEP.git
 $ cd JEP/script
 $ chmod +x install_opencv4.0.0_Nano.sh
 $ sudo ./install_opencv4.0.0_Nano.sh ~/opencv_install
+```
+###### Add Python bindings
+Add the OpenCV Python bindings into the virtual environment by creating a link to the OpenCV Python module within the virtual environment's `site-packages` directory. For example if the OpenCV module was built and installed as `/usr/local/python/cv2/python-3.6/cv2.cpython-36m-aarch64-linux-gnu.so` and the virtual environment is named `nano` then we'll create the link like so:
+
+```
+$ ln -s /usr/local/python/cv2/python-3.6/cv2.cpython-36m-aarch64-linux-gnu.so  ~/.virtualenvs/cvtest/lib/python3.6/site-packages/cv2.so
+```
+
+At this point we should see the OpenCV bindings with the correct version available to the Python virtual environment:
+```
+$ workon nano
+(nano) $ python
+Python 3.6.7 (default, Oct 22 2018, 11:32:17) 
+[GCC 8.2.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import cv2
+>>> cv2.__version__
+'4.0.0'
 ```
