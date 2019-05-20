@@ -125,6 +125,10 @@ Add the OpenCV Python bindings into the virtual environment by creating a link t
 ```
 $ ln -s /usr/local/python/cv2/python-3.6/cv2.cpython-36m-aarch64-linux-gnu.so  ~/.virtualenvs/cvtest/lib/python3.6/site-packages/cv2.so
 ```
+Rather than doing this for the individual virtual environments we can create a link to the OpenCV Python bindings within `/usr/lib/python3.6` which will be included in the `PYTHONPATH` of all virtual environments:
+```
+$ sudo ln -s /usr/local/python/cv2/python-3.6/cv2.cpython-36m-aarch64-linux-gnu.so /usr/lib/python3.6/cv2.cpython-36m-aarch64-linux-gnu.so
+```
 
 At this point we should see the OpenCV bindings with the correct version available to the Python virtual environment:
 ```
