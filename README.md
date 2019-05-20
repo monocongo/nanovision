@@ -1,7 +1,7 @@
 # nanovision
 Configuration of a NVIDIA Jetson Nano with deep learning based computer vision monitoring software.
 
-#### Install required system packages
+### Install required system packages
 ```
 $ sudo apt-get update
 $ sudo apt-get install git cmake
@@ -10,7 +10,22 @@ $ sudo apt-get install libhdf5-serial-dev hdf5-tools
 $ sudo apt-get install python3-dev
 ```
 
-#### Configure Python development environment
+### Add swap space
+The Jetson Nano comes with 4GB of RAM. To supplement this for cases where this is insufficient we'll add swap space to allow for moving pages of memory out of RAM, as described [here](https://linuxize.com/post/how-to-add-swap-space-on-ubuntu-18-04/).
+```
+$ sudo fallocate -l 2G /swapfile
+$ sudo chmod 600 /swapfile
+$ sudo mkswap /swapfile
+$ sudo swapon /swapfile
+```
+
+To make the swap permanent we'll add the following to the end of the `/etc/fstab` file:
+
+```
+/swapfile swap swap defaults 0 0
+```
+
+### Configure Python development environment
 ###### Install pip, virtualenv, and virtualenvwrapper
 ```
 $ wget https://bootstrap.pypa.io/get-pip.py
@@ -69,7 +84,7 @@ $ pip install scipy
 $ pip install keras
 ```
 
-#### Build the Jetson Inference engine
+### Build the Jetson Inference engine
 ###### Clone down the jetson-inference git repo:
 ```
 $ mkdir ~/git 
@@ -91,8 +106,8 @@ $ make
 $ sudo make install
 ```
 
-#### Build OpenCV
-###### (Option #1) Build from source
+### Build OpenCV
+###### Build from source
 Use the script for OpenCV 4.0.0 build/installation provided by NVIDIA.
 ```
 $ mkdir ~/opencv_install
@@ -102,35 +117,3 @@ $ cd JEP/script
 $ chmod +x install_opencv4.0.0_Nano.sh
 $ sudo ./install_opencv4.0.0_Nano.sh ~/opencv_install
 ```
-<!---
-```
-$ cd ~/git
-$ git clone https://github.com/opencv/opencv.git
-$ git clone https://github.com/opencv/opencv_contrib.git
-$ cd opencv
-$ mkdir build
-$ cd build
-$ cmake -D CMAKE_BUILD_TYPE=RELEASE \
--D CMAKE_INSTALL_PREFIX=/usr/local \
--D WITH_CUDA=ON \
--D ENABLE_FAST_MATH=1 \
--D CUDA_FAST_MATH=1 \
--D WITH_CUBLAS=1 \
--D WITH_GSTREAMER=ON \
--D WITH_LIBV4L=ON \
--D OPENCV_ENABLE_NONFREE=ON \
--D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules \
--D BUILD_EXAMPLES=OFF ..
-$ make -j4
-$ sudo make install
-$ sudo ldconfig
-```
-
-###### (Option #2) Use build script from mdegans 
-```
-$ cd ~/git 
-$ git clone https://github.com/mdegans/nano_build_opencv.git
-$ cd nano_build_opencv
-$ ./build_opencv.sh 
-```
---->
