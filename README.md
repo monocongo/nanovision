@@ -15,7 +15,7 @@ $ sudo apt-get install libffi-dev
 ### Add swap space
 The Jetson Nano comes with 4GB of RAM. To supplement this for cases where this is insufficient we'll add swap space to allow for moving pages of memory out of RAM, as described [here](https://linuxize.com/post/how-to-add-swap-space-on-ubuntu-18-04/).
 ```
-$ sudo fallocate -l 2G /swapfile
+$ sudo fallocate -l 6G /swapfile
 $ sudo chmod 600 /swapfile
 $ sudo mkswap /swapfile
 $ sudo swapon /swapfile
