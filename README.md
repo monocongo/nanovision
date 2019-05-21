@@ -70,11 +70,11 @@ Use `sudo` to recursively change the owner of the directory to the current user:
 $ sudo chown -R james ~/.cache
 ```
 
-Add packages into the virtual environment we'll need, beginning with [NumPy](https://www.numpy.org/):
+Install packages into the virtual environment we'll need, beginning with [NumPy](https://www.numpy.org/):
 ```
 $ pip install numpy
 ```
-Add the official Jetson Nano TensorFlow package:
+Install the official [Jetson Nano TensorFlow](https://docs.nvidia.com/deeplearning/frameworks/install-tf-xavier/index.html) package:
 
 ```
 $ pip install --extra-index-url https://developer.download.nvidia.com/compute/redist/jp/v42 tensorflow-gpu==1.13.1+nv19.3
