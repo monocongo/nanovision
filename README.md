@@ -141,3 +141,13 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>> cv2.__version__
 '4.0.0'
 ```
+### deep_monitor
+In order to perform object detection and facial recognition we'll install and run [**deep_monitor**](https://github.com/monocongo/deep_monitor) which is a Python application that utilizes deep learning models, OpenCV, and a PostGRES database.
+
+The **deep_monitor** application utilizes a PyTorch implmentation of the RetinaNet object detection model provided by NVIDIA, and as such it is required to run within a Docker container. In order to leverage the NVIDIA GPU with CUDA it's further required to run the Docker container via the NVIDIA Docker wrapper, nvidia-docker.
+Docker should be pre-installed on the Jetson Nano. To verify this we'll find it's installed location:
+```
+$ which docker
+/usr/bin/docker
+```
+If no location is reported by the command above then we need to install the Docker package following the instructions [here].
